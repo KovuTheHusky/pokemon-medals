@@ -1,0 +1,74 @@
+---
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{{ site.title }}</title>
+    <style>
+      html, body {
+        height: 100%;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-align: center;
+      }
+      h1 {
+        margin: 24px auto;
+      }
+      .grid {
+        max-width: 1140px;
+        margin: 24px auto;
+        display: grid;
+        grid-auto-rows: auto;
+        grid-auto-flow: dense;
+        vertical-align: middle;
+        padding: 0;
+        grid-gap: 12px;
+        grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
+      }
+      .grid div {
+        font-size: 1rem;
+        text-decoration: none;
+      }
+      .grid div img {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      a {
+        display: inline-block;
+        background-color: #000;
+        color: #fff;
+        text-decoration: none;
+        padding: 12px;
+        margin: 0 auto;
+        border-radius: 0.25rem;
+      }
+      a.primary {
+        background-color: #f00;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>pokemon-medals</h1>
+    <a href="{{ site.baseurl }}/medals.zip" class="primary">Download</a>
+    <a href="https://github.com/KovuTheHusky/pokemon-medals">Source</a>
+    <div class="grid">
+      {% for medal in site.data.special %}
+      <div><img src="{{ site.baseurl }}/special/{{ medal }}.png" alt="" /></div>
+      {% endfor %}
+      {% for medal in site.data.standard %}
+      <div><img src="{{ site.baseurl }}/standard/gold/{{ medal }}.png" alt="" /></div>
+      <div><img src="{{ site.baseurl }}/standard/silver/{{ medal }}.png" alt="" /></div>
+      <div><img src="{{ site.baseurl }}/standard/bronze/{{ medal }}.png" alt="" /></div>
+      <div><img src="{{ site.baseurl }}/standard/shadow/{{ medal }}.png" alt="" /></div>
+      {% endfor %}
+      {% for medal in site.data.type %}
+      <div><img src="{{ site.baseurl }}/type/gold/{{ medal }}.png" alt="" /></div>
+      <div><img src="{{ site.baseurl }}/type/silver/{{ medal }}.png" alt="" /></div>
+      <div><img src="{{ site.baseurl }}/type/bronze/{{ medal }}.png" alt="" /></div>
+      <div><img src="{{ site.baseurl }}/type/shadow/{{ medal }}.png" alt="" /></div>
+      {% endfor %}
+    </div>
+  </body>
+</html>

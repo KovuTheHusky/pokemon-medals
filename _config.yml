@@ -1,0 +1,7 @@
+title: pokemon-medals
+description: "Generates icons for Pokémon GO medals from official assets."
+baseurl: "/pokemon-medals"
+url: "https://kovuthehusky.github.io/pokemon-medals"
+
+plugins:
+  - jekyll-feed
