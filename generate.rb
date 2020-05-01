@@ -30,6 +30,8 @@ colors.each do |color|
 end
 FileUtils.mkdir_p('special');
 
+FileUtils.mkdir_p('_data');
+
 # Standard
 
 json = []
