@@ -12,7 +12,7 @@ mkdir _site
 git clone https://${GITHUB_TOKEN}@github.com/KovuTheHusky/pokemon-medals.git --branch gh-pages _site
 
 ruby generate.rb
-for i in {1..10}; do find . -type f -name "*.png" -exec pngquant --force --skip-if-larger --output {} --speed 1 --strip {} \;; done
+for i in {1..10}; do find . -type f -name "*.png" -exec pngquant --force --skip-if-larger --output {} --speed 1 {} \;; done
 bundle exec jekyll build
 
 cd _site
