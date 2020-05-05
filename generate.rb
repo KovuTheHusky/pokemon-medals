@@ -51,6 +51,17 @@ JSON.parse(File.read('standard.json')).each do |entry|
   icon.write('standard/' + colors[0] + '/' + name + '.png')
   json << name
 end
+name = 'default'
+for i in 1..3 do
+  inner = ImageList.new(dir + 'default_badge_' + i.to_s + '.png').scale(144, 144)
+  outer = ImageList.new(dir + 'badge_ring_' + i.to_s + '.png')
+  icon = outer.composite(inner, CenterGravity, OverCompositeOp)
+  icon.write('standard/' + colors[i] + '/' + name + '.png')
+end
+shadow = ImageList.new(dir + 'default_badge_0.png').scale(144, 144)
+icon = empty.composite(shadow, CenterGravity, OverCompositeOp)
+icon.write('standard/' + colors[0] + '/' + name + '.png')
+json << name
 file = File.open("_data/standard.json", "w")
 file.puts(JSON.pretty_generate(json))
 file.close
