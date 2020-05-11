@@ -4,7 +4,10 @@ branches:
     - master
 rvm:
   - 2.7.1
-cache: bundler
+cache:
+  bundler: true
+  directories:
+    - /home/travis/.rvm
 before_install:
   - gem install bundler
 before_script:
