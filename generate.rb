@@ -1,3 +1,4 @@
+require 'bundler/setup'
 require 'fileutils'
 require 'git'
 require 'i18n'
