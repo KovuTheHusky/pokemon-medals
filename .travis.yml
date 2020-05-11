@@ -9,5 +9,7 @@ before_install:
   - gem install bundler
 before_script:
   - sudo apt-get -y install pngquant
+  - sudo gem install git
+  - gem install nokogiri
   - chmod +x ./deploy.sh
 script: ./deploy.sh
