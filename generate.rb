@@ -4,7 +4,6 @@ require 'git'
 require 'i18n'
 require 'json'
 require 'rmagick'
-require 'rubyzip'
 require 'zip'
 
 include Magick
