@@ -9,6 +9,5 @@ before_install:
   - gem install bundler
 before_script:
   - sudo apt-get -y install pngquant
-  - bundle update
   - chmod +x ./deploy.sh
 script: ./deploy.sh
