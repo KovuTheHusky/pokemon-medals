@@ -28,10 +28,11 @@ end
 # Performance-booster for watching directories on Windows
 gem "wdm", "~> 0.1.1", :install_if => Gem.win_platform?
 
-gem 'fileutils'
-gem 'git'
-gem 'i18n'
-gem 'json'
-gem 'rmagick'
-gem 'rubyzip'
-gem 'zip'
+gem "fileutils", "~> 1.4"
+gem "git", "~> 1.7"
+gem "i18n", "~> 1.8"
+gem "json", "~> 2.3"
+gem "nokogiri", "~> 1.10"
+gem "rmagick", "~> 4.1"
+gem "rubyzip", "~> 2.3"
+gem "zip", "~> 2.0"
