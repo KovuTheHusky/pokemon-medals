@@ -1,9 +1,9 @@
+require 'bundler/setup'
 require 'fileutils'
 require 'git'
 require 'i18n'
 require 'json'
 require 'rmagick'
-
 require 'zip'
 
 include Magick
