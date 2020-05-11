@@ -80,9 +80,6 @@ GEM
       tzinfo (>= 1.0.0)
     unicode-display_width (1.7.0)
     wdm (0.1.1)
-    zip (2.0.2)
-    zip-zip (0.3)
-      rubyzip (>= 1.0.0)
 
 PLATFORMS
   ruby
@@ -97,12 +94,10 @@ DEPENDENCIES
   minima (~> 2.5)
   nokogiri (~> 1.10)
   rmagick (~> 4.1)
-  rubyzip (~> 2.3)
+  rubyzip
   tzinfo (~> 1.2)
   tzinfo-data
   wdm (~> 0.1.1)
-  zip (~> 2.0)
-  zip-zip (~> 0.3)
 
 BUNDLED WITH
    2.1.4

@@ -34,6 +34,4 @@ gem "i18n", "~> 1.8"
 gem "json", "~> 2.3"
 gem "nokogiri", "~> 1.10"
 gem "rmagick", "~> 4.1"
-gem "rubyzip", "~> 2.3"
-gem "zip", "~> 2.0"
-gem "zip-zip", "~> 0.3"
+gem 'rubyzip', require: 'zip'
