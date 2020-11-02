@@ -16,7 +16,7 @@ empty = Image.new(256, 256) {
   self.background_color = 'transparent'
 }
 specials = [
-  ['5001', '5021', '5031'],
+  ['5001', '5021', '5031', '5071'],
   ['5039'],
   ['5100']
 ]
