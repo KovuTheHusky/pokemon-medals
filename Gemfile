@@ -31,7 +31,7 @@ gem "wdm", "~> 0.1.1", :install_if => Gem.win_platform?
 gem "fileutils", "~> 1.5"
 gem "git", "~> 1.7"
 gem "i18n", "~> 1.8"
-gem "json", "~> 2.4"
+gem "json", "~> 2.5"
 gem "nokogiri", "~> 1.10"
 gem "rmagick", "~> 4.1"
 gem 'rubyzip', require: 'zip'
