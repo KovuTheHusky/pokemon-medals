@@ -67,7 +67,7 @@ GEM
       ffi (~> 1.0)
     rchardet (1.8.0)
     rexml (3.2.4)
-    rmagick (4.1.2)
+    rmagick (4.2.1)
     rouge (3.26.0)
     rubyzip (2.3.0)
     safe_yaml (1.0.5)
@@ -94,7 +94,7 @@ DEPENDENCIES
   json (~> 2.5)
   minima (~> 2.5)
   nokogiri (~> 1.11)
-  rmagick (~> 4.1)
+  rmagick (~> 4.2)
   rubyzip
   tzinfo (~> 2.0)
   tzinfo-data
