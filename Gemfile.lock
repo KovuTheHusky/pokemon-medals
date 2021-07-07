@@ -12,7 +12,7 @@ GEM
     ffi (1.13.1)
     fileutils (1.5.0)
     forwardable-extended (2.6.0)
-    git (1.8.1)
+    git (1.9.0)
       rchardet (~> 1.8)
     http_parser.rb (0.6.0)
     i18n (1.8.10)
@@ -87,7 +87,7 @@ PLATFORMS
 
 DEPENDENCIES
   fileutils (~> 1.5)
-  git (~> 1.8)
+  git (~> 1.9)
   i18n (~> 1.8)
   jekyll (~> 4.2.0)
   jekyll-feed (~> 0.15)
