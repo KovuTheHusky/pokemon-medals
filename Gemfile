@@ -32,6 +32,6 @@ gem "fileutils", "~> 1.5"
 gem "git", "~> 1.9"
 gem "i18n", "~> 1.8"
 gem "json", "~> 2.5"
-gem "nokogiri", "~> 1.11"
+gem "nokogiri", "~> 1.12"
 gem "rmagick", "~> 4.2"
 gem 'rubyzip', require: 'zip'
