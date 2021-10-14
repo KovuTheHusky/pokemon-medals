@@ -40,7 +40,7 @@ GEM
       jekyll (>= 3.3, < 5.0)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
-    json (2.5.1)
+    json (2.6.0)
     kramdown (2.3.1)
       rexml
     kramdown-parser-gfm (1.1.0)
@@ -91,7 +91,7 @@ DEPENDENCIES
   i18n (~> 1.8)
   jekyll (~> 4.2.1)
   jekyll-feed (~> 0.15)
-  json (~> 2.5)
+  json (~> 2.6)
   minima (~> 2.5)
   nokogiri (~> 1.12)
   rmagick (~> 4.2)
