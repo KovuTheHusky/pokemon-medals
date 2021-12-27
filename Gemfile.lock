@@ -67,7 +67,7 @@ GEM
       ffi (~> 1.0)
     rchardet (1.8.0)
     rexml (3.2.5)
-    rmagick (4.2.3)
+    rmagick (4.2.4)
     rouge (3.26.1)
     rubyzip (2.3.2)
     safe_yaml (1.0.5)
