@@ -30,7 +30,7 @@ gem "wdm", "~> 0.1.1", :install_if => Gem.win_platform?
 
 gem "fileutils", "~> 1.6"
 gem "git", "~> 1.10"
-gem "i18n", "~> 1.8"
+gem "i18n", "~> 1.9"
 gem "json", "~> 2.6"
 gem "nokogiri", "~> 1.13"
 gem "rmagick", "~> 4.2"
