@@ -37,6 +37,8 @@ FileUtils.mkdir_p('special');
 
 FileUtils.mkdir_p('_data');
 
+shine = ImageList.new(dir + 'Misc/tx_badge_sparkles.png').scale(2.0)
+
 # Standard
 
 json = []
@@ -50,6 +52,9 @@ JSON.parse(File.read('standard.json')).each do |entry|
     inner = ImageList.new(dir + 'Achievements/Badge_' + entry[0] + '_' + level.to_s + '_01.png').scale(0.5625)
     outer = ImageList.new(dir + 'Frames/badge_ring_' + i.to_s + '.png')
     icon = outer.composite(inner, CenterGravity, OverCompositeOp)
+    if i >= 3 then
+      icon = icon.composite(shine, CenterGravity, OverCompositeOp)
+    end
     icon.write('standard/' + colors[i] + '/' + name + '.png')
   end
   shadow = ImageList.new(dir + 'Achievements/Badge_' + entry[0] + '_1_01.png').scale(0.5625)
@@ -66,9 +71,12 @@ for i in 1..4 do
   if i == 4 then
     level = 2
   end
-  inner = ImageList.new(dir + 'Misc/default_badge_' + level.to_s + '.png').scale(0.5625)
+  inner = ImageList.new(dir + 'Misc/default_badge_' + level.to_s + '.png')
   outer = ImageList.new(dir + 'Frames/badge_ring_' + i.to_s + '.png')
   icon = outer.composite(inner, CenterGravity, OverCompositeOp)
+  if i >= 3 then
+    icon = icon.composite(shine, CenterGravity, OverCompositeOp)
+  end
   icon.write('standard/' + colors[i] + '/' + name + '.png')
 end
 shadow = ImageList.new(dir + 'Misc/default_badge_0.png').scale(0.5625)
@@ -88,6 +96,9 @@ JSON.parse(File.read('type.json')).each do |entry|
   for i in 1..4 do
     outer = ImageList.new(dir + 'Frames/badge_ring_' + i.to_s + '.png')
     icon = outer.composite(inner, CenterGravity, OverCompositeOp)
+    if i >= 3 then
+      icon = icon.composite(shine, CenterGravity, OverCompositeOp)
+    end
     icon.write('type/' + colors[i] + '/' + name + '.png')
   end
   shadow = inner
@@ -115,9 +126,13 @@ JSON.parse(File.read('special.json')).each do |entry|
     end
   end
   if outer.nil?
-    FileUtils.cp(dir + 'Events/Badge_' + entry[0] + '.png', 'special/' + name + '.png')
+    inner = inner.scale(256, 256)
+    icon = inner.composite(shine, CenterGravity, OverCompositeOp)
+    icon.write('special/' + name + '.png')
   else
     icon = outer.composite(inner, CenterGravity, OverCompositeOp)
+    icon = icon.scale(256, 256)
+    icon = icon.composite(shine, CenterGravity, OverCompositeOp)
     icon.write('special/' + name + '.png')
   end
   json << name
