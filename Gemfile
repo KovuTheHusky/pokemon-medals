@@ -29,7 +29,7 @@ end
 gem "wdm", "~> 0.1.1", :install_if => Gem.win_platform?
 
 gem "fileutils", "~> 1.7"
-gem "git", "~> 1.12"
+gem "git", "~> 1.13"
 gem "i18n", "~> 1.12"
 gem "json", "~> 2.6"
 gem "nokogiri", "~> 1.13"
