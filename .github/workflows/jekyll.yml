@@ -7,7 +7,7 @@ jobs:
   jekyll:
     runs-on: ubuntu-latest
     steps:
-      - run: sudo apt-get install libz-dev build-essential dh-autoreconf libpq-dev
+      - run: sudo apt-get install libz-dev build-essential dh-autoreconf libpq-dev libmagickwand-dev libmagick++-dev
 
       - uses: actions/checkout@v2
 
