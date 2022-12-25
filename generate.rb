@@ -13,7 +13,7 @@ I18n.available_locales = [:en]
 colors = ['shadow', 'bronze', 'silver', 'gold', 'platinum']
 dir = 'assets/Images/Badges/'
 empty = Image.new(256, 256) {
-  self.background_color = 'transparent'
+  background_color = 'transparent'
 }
 specials = [
   ['5001', '5021', '5031', '5071', '5232'], # star
