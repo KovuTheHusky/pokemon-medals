@@ -7,8 +7,6 @@ jobs:
   jekyll:
     runs-on: ubuntu-latest
     steps:
-      - run: sudo apt-get install libz-dev build-essential dh-autoreconf libpq-dev libmagickwand-dev libmagick++-dev
-
       - uses: actions/checkout@v2
 
       - uses: actions/cache@v2
@@ -26,9 +24,7 @@ jobs:
 
       - run: bundle install
 
-      - run: ruby generate.rb
-
-      - run: for i in {1..10}; do find . -type f -name "*.png" -exec pngquant --force --skip-if-larger --output {} --speed 1 {} \;; done
+      - run: ruby build.rb
 
       - uses: helaili/jekyll-action@v2
         with:

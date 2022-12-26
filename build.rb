@@ -5,19 +5,23 @@ require 'fileutils'
 require 'mini_magick'
 require 'active_support/inflector'
 
-FileUtils.mkdir_p('type/');
-FileUtils.mkdir_p('type/shadow/');
-FileUtils.mkdir_p('type/bronze/');
-FileUtils.mkdir_p('type/silver/');
-FileUtils.mkdir_p('type/gold/');
-FileUtils.mkdir_p('type/platinum/');
-FileUtils.mkdir_p('general/');
-FileUtils.mkdir_p('general/shadow/');
-FileUtils.mkdir_p('general/bronze/');
-FileUtils.mkdir_p('general/silver/');
-FileUtils.mkdir_p('general/gold/');
-FileUtils.mkdir_p('general/platinum/');
-FileUtils.mkdir_p('other/');
+FileUtils.mkdir_p('general/')
+FileUtils.mkdir_p('general/shadow/')
+FileUtils.mkdir_p('general/bronze/')
+FileUtils.mkdir_p('general/silver/')
+FileUtils.mkdir_p('general/gold/')
+FileUtils.mkdir_p('general/platinum/')
+FileUtils.mkdir_p('type/')
+FileUtils.mkdir_p('type/shadow/')
+FileUtils.mkdir_p('type/bronze/')
+FileUtils.mkdir_p('type/silver/')
+FileUtils.mkdir_p('type/gold/')
+FileUtils.mkdir_p('type/platinum/')
+FileUtils.mkdir_p('other/')
+
+general = {}
+type = {}
+other = {}
 
 # Specify the URL of the page to scrape
 url = 'https://pokemongo.fandom.com/wiki/Medals'
@@ -40,40 +44,56 @@ tables.each do |table|
 
     if cols.length() == 7
 
-      filename = cols[0]
+      name = cols[0].text.strip
+      filename = name.downcase.sub(' ', '')
 
-      if cols[1].text.ends_with?('-type caught')
-        folder = 'type/'
-      else
-        folder = 'general/'
+      if filename.empty?
+        image = cols[2].css('a.image')[0]
+        parts = image['href'].split('/')
+        filename = parts[-3].downcase
+        filename.sub!('%c3%a9', 'e')
+        filename.sub!('%27', '')
+        filename.sub!('.png', '')
+        filename.sub!('_medal', '')
+        filename.sub!('_shadow', '')
       end
 
+      if cols[1].text.strip.end_with?('-type caught')
+        folder = 'type/'
+        type[filename] = name
+      else
+        folder = 'general/'
+        general[filename] = name
+      end
+
+      next if cols[2].css('a.image').length() == 0
+
       webp_filepath = File.join(folder + 'shadow/', filename + '.webp')
-      data = URI.open(cols[2].css('a.image')[0]['href']);
+      data = URI.open(cols[2].css('a.image')[0]['href'])
       image = MiniMagick::Image.read(data)
       image.format 'webp'
       image.write webp_filepath
 
       webp_filepath = File.join(folder + 'bronze/', filename + '.webp')
-      data = URI.open(cols[3].css('a.image')[0]['href']);
+      data = URI.open(cols[3].css('a.image')[0]['href'])
       image = MiniMagick::Image.read(data)
       image.format 'webp'
       image.write webp_filepath
 
       webp_filepath = File.join(folder + 'silver/', filename + '.webp')
-      data = URI.open(cols[4].css('a.image')[0]['href']);
+      data = URI.open(cols[4].css('a.image')[0]['href'])
       image = MiniMagick::Image.read(data)
       image.format 'webp'
       image.write webp_filepath
 
       webp_filepath = File.join(folder + 'gold/', filename + '.webp')
-      data = URI.open(cols[5].css('a.image')[0]['href']);
+      data = URI.open(cols[5].css('a.image')[0]['href'])
       image = MiniMagick::Image.read(data)
       image.format 'webp'
       image.write webp_filepath
 
       webp_filepath = File.join(folder + 'platinum/', filename + '.webp')
-      data = URI.open(cols[6].css('a.image')[0]['href']);
+      data = URI.open(cols[6].css('a.image')[0]['href'])
       image = MiniMagick::Image.read(data)
       image.format 'webp'
       image.write webp_filepath
@@ -86,11 +106,15 @@ tables.each do |table|
         parts = image['href'].split('/')
         filename = parts[-3].downcase
         filename.sub!('%c3%a9', 'e')
+        filename.sub!('%27', '')
         filename.sub!('.png', '')
+        filename.sub!('_medal', '')
 
-        webp_filepath = File.join(folder, filename + '.webp')
+        other[filename] = cols[0].css(':scope > text()').text.strip
 
-        data = URI.open(image['href']);
+        webp_filepath = File.join('other/', filename + '.webp')
+
+        data = URI.open(image['href'])
         image = MiniMagick::Image.read(data)
         image.format 'webp'
         image.write webp_filepath
@@ -98,3 +122,7 @@ tables.each do |table|
     end
   end
 end
+
+File.write('general.json', JSON.pretty_generate(general))
+File.write('type.json', JSON.pretty_generate(type))
+File.write('other.json', JSON.pretty_generate(other))
