@@ -3,7 +3,6 @@ require 'open-uri'
 require 'nokogiri'
 require 'fileutils'
 require 'mini_magick'
-require 'active_support/inflector'
 
 FileUtils.mkdir_p('general/')
 FileUtils.mkdir_p('general/shadow/')
