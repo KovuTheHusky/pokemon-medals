@@ -110,7 +110,7 @@ tables.each do |table|
         filename.sub!('.png', '')
         filename.sub!('_medal', '')
 
-        other[filename] = cols[0].css(':scope > text()').text.strip
+        other[filename] = cols[0].css('i > text()').text.strip
 
         webp_filepath = File.join('other/', filename + '.webp')
 
