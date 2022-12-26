@@ -35,3 +35,7 @@ gem "json", "~> 2.6"
 gem "nokogiri", "~> 1.13"
 gem "rmagick", "~> 5.1"
 gem 'rubyzip', require: 'zip'
+
+gem "activesupport", "~> 7.0"
+
+gem "mini_magick", "~> 4.12"
