@@ -46,7 +46,7 @@ tables.each do |table|
       next if cols[2].css('a.image').length() == 0
 
       name = cols[0].text.strip
-      filename = name.downcase.sub(' ', '')
+      filename = name.downcase.sub(' ', '-')
 
       if filename.empty?
         image = cols[2].css('a.image')[0]
@@ -57,6 +57,7 @@ tables.each do |table|
         filename.sub!('.png', '')
         filename.sub!('_medal', '')
         filename.sub!('_shadow', '')
+        filename.sub!('_', '-')
       end
 
       if cols[1].text.strip.end_with?('-type caught')
@@ -108,6 +109,7 @@ tables.each do |table|
         filename.sub!('%27', '')
         filename.sub!('.png', '')
         filename.sub!('_medal', '')
+        filename.sub!('_', '-')
 
         other[filename] = cols[0].css('i > text()').text.strip
 
