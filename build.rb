@@ -123,6 +123,7 @@ tables.each do |table|
   end
 end
 
-File.write('general.json', JSON.pretty_generate(general))
-File.write('type.json', JSON.pretty_generate(type))
-File.write('other.json', JSON.pretty_generate(other))
+FileUtils.mkdir_p('_data/')
+File.write('_data/general.json', JSON.pretty_generate(general))
+File.write('_data/type.json', JSON.pretty_generate(type))
+File.write('_data/other.json', JSON.pretty_generate(other))

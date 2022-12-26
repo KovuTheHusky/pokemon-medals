@@ -52,25 +52,24 @@
   </head>
   <body>
     <h1>pokemon-medals</h1>
-    <a href="{{ site.baseurl }}/medals.zip" class="primary">Download</a>
     <a href="https://github.com/KovuTheHusky/pokemon-medals">Source</a>
     <div class="grid">
-      {% for medal in site.data.special %}
-      <div><img src="{{ site.baseurl }}/special/{{ medal }}.png" alt="" /></div>
+      {% for medal in site.data.other %}
+      <div><img src="{{ site.baseurl }}/other/{{ medal[0] }}.webp" alt="{{ medal[1] }}" /></div>
       {% endfor %}
-      {% for medal in site.data.standard %}
-      <div><img src="{{ site.baseurl }}/standard/platinum/{{ medal }}.png" alt="" /></div>
-      <div><img src="{{ site.baseurl }}/standard/gold/{{ medal }}.png" alt="" /></div>
-      <div><img src="{{ site.baseurl }}/standard/silver/{{ medal }}.png" alt="" /></div>
-      <div><img src="{{ site.baseurl }}/standard/bronze/{{ medal }}.png" alt="" /></div>
-      <div><img src="{{ site.baseurl }}/standard/shadow/{{ medal }}.png" alt="" /></div>
+      {% for medal in site.data.general %}
+      <div><img src="{{ site.baseurl }}/general/platinum/{{ medal[0] }}.webp" alt="{{ medal[1] }}" /></div>
+      <div><img src="{{ site.baseurl }}/general/gold/{{ medal[0] }}.webp" alt="{{ medal[1] }}" /></div>
+      <div><img src="{{ site.baseurl }}/general/silver/{{ medal[0] }}.webp" alt="{{ medal[1] }}" /></div>
+      <div><img src="{{ site.baseurl }}/general/bronze/{{ medal[0] }}.webp" alt="{{ medal[1] }}" /></div>
+      <div><img src="{{ site.baseurl }}/general/shadow/{{ medal[0] }}.webp" alt="{{ medal[1] }}" /></div>
       {% endfor %}
       {% for medal in site.data.type %}
-      <div><img src="{{ site.baseurl }}/type/platinum/{{ medal }}.png" alt="" /></div>
-      <div><img src="{{ site.baseurl }}/type/gold/{{ medal }}.png" alt="" /></div>
-      <div><img src="{{ site.baseurl }}/type/silver/{{ medal }}.png" alt="" /></div>
-      <div><img src="{{ site.baseurl }}/type/bronze/{{ medal }}.png" alt="" /></div>
-      <div><img src="{{ site.baseurl }}/type/shadow/{{ medal }}.png" alt="" /></div>
+      <div><img src="{{ site.baseurl }}/type/platinum/{{ medal[0] }}.webp" alt="{{ medal[1] }}" /></div>
+      <div><img src="{{ site.baseurl }}/type/gold/{{ medal[0] }}.webp" alt="{{ medal[1] }}" /></div>
+      <div><img src="{{ site.baseurl }}/type/silver/{{ medal[0] }}.webp" alt="{{ medal[1] }}" /></div>
+      <div><img src="{{ site.baseurl }}/type/bronze/{{ medal[0] }}.webp" alt="{{ medal[1] }}" /></div>
+      <div><img src="{{ site.baseurl }}/type/shadow/{{ medal[0] }}.webp" alt="{{ medal[1] }}" /></div>
       {% endfor %}
     </div>
   </body>
