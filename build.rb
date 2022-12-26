@@ -47,12 +47,14 @@ tables.each do |table|
 
       name = cols[0].text.strip
       filename = name.downcase.gsub(' ', '-')
+      filename.gsub!('é', 'e')
 
       if filename.empty?
         image = cols[2].css('a.image')[0]
         parts = image['href'].split('/')
         filename = parts[-3].downcase
         filename.gsub!('%c3%a9', 'e')
+        filename.gsub!('é', 'e')
         filename.gsub!('%27', '')
         filename.sub!('.png', '')
         filename.sub!('_medal', '')
@@ -106,6 +108,7 @@ tables.each do |table|
         parts = image['href'].split('/')
         filename = parts[-3].downcase
         filename.gsub!('%c3%a9', 'e')
+        filename.gsub!('é', 'e')
         filename.gsub!('%27', '')
         filename.sub!('.png', '')
         filename.sub!('_medal', '')
