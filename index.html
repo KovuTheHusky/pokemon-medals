@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>pokemon-medals</title>
+    <style>
+      html, body {
+        height: 100%;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-align: center;
+      }
+      h1 {
+        margin: 24px auto;
+      }
+      .grid {
+        max-width: 1140px;
+        margin: 24px auto;
+        display: grid;
+        grid-auto-rows: auto;
+        grid-auto-flow: dense;
+        vertical-align: middle;
+        padding: 0;
+        grid-gap: 12px;
+        grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
+      }
+      .grid div {
+        font-size: 1rem;
+        text-decoration: none;
+      }
+      .grid div img {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      a {
+        display: inline-block;
+        background-color: #000;
+        color: #fff;
+        text-decoration: none;
+        padding: 12px;
+        margin: 0 auto;
+        border-radius: 0.25rem;
+      }
+      a.primary {
+        background-color: #f00;
+      }
+      @media (prefers-color-scheme: dark) {
+        html, body {
+          background: #000;
+          color: #fff;
+        }
+        a {
+          background-color: #fff;
+          color: #000;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>pokemon-medals</h1>
+    <a href="https://github.com/KovuTheHusky/pokemon-medals">Source</a>
+    <div class="grid">
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-fest-2017.webp" alt="Pokémon GO Fest" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-park.webp" alt="Pikachu Outbreak 2017" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-safari-zone-europe.webp" alt="GO Safari Zone - Europe 2017" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-fest-2018.webp" alt="Pokémon GO Fest" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-special-weekend.webp" alt="Pokémon GO Special Weekend April 7, 2019" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-safari-zone-yokosuka.webp" alt="Pokémon GO Safari Zone" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-safari-zone-porto-alegre.webp" alt="Pokémon GO Safari Zone" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-safari-zone-sentosa.webp" alt="Pokémon GO Safari Zone" /></div>
+      
+      <div><img src="/pokemon-medals/other/city-explorer.webp" alt="Ultra Beast Arrival" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-fest-2019-chicago.webp" alt="Pokémon GO Fest" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-fest-2019-dortmund.webp" alt="Pokémon GO Fest" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-fest-2019-yokohama.webp" alt="Pokémon GO Fest" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-safari-zone-montreal.webp" alt="Pokémon GO Safari Zone" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-safari-zone-st.-louis.webp" alt="Pokémon GO Safari Zone" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-safari-zone-liverpool.webp" alt="Pokémon GO Safari Zone" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-safari-zone-philadelphia.webp" alt="Pokémon GO Safari Zone" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-fest-2020.webp" alt="Pokémon GO Fest" /></div>
+      
+      <div><img src="/pokemon-medals/other/kanto-green.webp" alt="Pokémon GO Tour: Kanto" /></div>
+      
+      <div><img src="/pokemon-medals/other/kanto-red.webp" alt="Pokémon GO Tour: Kanto" /></div>
+      
+      <div><img src="/pokemon-medals/other/ticketed-research.webp" alt="Partner Research: Verizon" /></div>
+      
+      <div><img src="/pokemon-medals/other/city-spotlight.webp" alt="City Spotlight 2020" /></div>
+      
+      <div><img src="/pokemon-medals/other/legacy-40.webp" alt="Legacy 40" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-fest-2021.webp" alt="Pokémon GO Fest" /></div>
+      
+      <div><img src="/pokemon-medals/other/professors-research.webp" alt="Professor's Research" /></div>
+      
+      <div><img src="/pokemon-medals/other/johto-gold.webp" alt="Pokémon GO Tour: Johto" /></div>
+      
+      <div><img src="/pokemon-medals/other/johto-silver.webp" alt="Pokémon GO Tour: Johto" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-tour-live.webp" alt="Pokémon GO Tour: Live – Step into Kanto" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-safari-zone-seville.webp" alt="Pokémon GO Safari Zone" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-fest-2022.webp" alt="Pokémon GO Fest" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-fest-2022-berlin.webp" alt="Pokémon GO Fest: Berlin" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-fest-2022-seattle.webp" alt="Pokémon GO Fest: Seattle - City Experience" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-fest-2022-sapporo.webp" alt="Pokémon GO Fest: Sapporo - City Experience" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-safari-zone-goyang.webp" alt="Pokémon GO Safari Zone" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-safari-zone-new-taipei-city.webp" alt="Pokémon GO Safari Zone" /></div>
+      
+      <div><img src="/pokemon-medals/other/pokemon-go-safari-zone-singapore.webp" alt="Pokémon GO Safari Zone" /></div>
+      
+      
+      <div><img src="/pokemon-medals/general/platinum/jogger.webp" alt="Jogger" /></div>
+      <div><img src="/pokemon-medals/general/gold/jogger.webp" alt="Jogger" /></div>
+      <div><img src="/pokemon-medals/general/silver/jogger.webp" alt="Jogger" /></div>
+      <div><img src="/pokemon-medals/general/bronze/jogger.webp" alt="Jogger" /></div>
+      <div><img src="/pokemon-medals/general/shadow/jogger.webp" alt="Jogger" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/kanto.webp" alt="Kanto" /></div>
+      <div><img src="/pokemon-medals/general/gold/kanto.webp" alt="Kanto" /></div>
+      <div><img src="/pokemon-medals/general/silver/kanto.webp" alt="Kanto" /></div>
+      <div><img src="/pokemon-medals/general/bronze/kanto.webp" alt="Kanto" /></div>
+      <div><img src="/pokemon-medals/general/shadow/kanto.webp" alt="Kanto" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/collector.webp" alt="Collector" /></div>
+      <div><img src="/pokemon-medals/general/gold/collector.webp" alt="Collector" /></div>
+      <div><img src="/pokemon-medals/general/silver/collector.webp" alt="Collector" /></div>
+      <div><img src="/pokemon-medals/general/bronze/collector.webp" alt="Collector" /></div>
+      <div><img src="/pokemon-medals/general/shadow/collector.webp" alt="Collector" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/scientist.webp" alt="Scientist" /></div>
+      <div><img src="/pokemon-medals/general/gold/scientist.webp" alt="Scientist" /></div>
+      <div><img src="/pokemon-medals/general/silver/scientist.webp" alt="Scientist" /></div>
+      <div><img src="/pokemon-medals/general/bronze/scientist.webp" alt="Scientist" /></div>
+      <div><img src="/pokemon-medals/general/shadow/scientist.webp" alt="Scientist" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/breeder.webp" alt="Breeder" /></div>
+      <div><img src="/pokemon-medals/general/gold/breeder.webp" alt="Breeder" /></div>
+      <div><img src="/pokemon-medals/general/silver/breeder.webp" alt="Breeder" /></div>
+      <div><img src="/pokemon-medals/general/bronze/breeder.webp" alt="Breeder" /></div>
+      <div><img src="/pokemon-medals/general/shadow/breeder.webp" alt="Breeder" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/backpacker.webp" alt="Backpacker" /></div>
+      <div><img src="/pokemon-medals/general/gold/backpacker.webp" alt="Backpacker" /></div>
+      <div><img src="/pokemon-medals/general/silver/backpacker.webp" alt="Backpacker" /></div>
+      <div><img src="/pokemon-medals/general/bronze/backpacker.webp" alt="Backpacker" /></div>
+      <div><img src="/pokemon-medals/general/shadow/backpacker.webp" alt="Backpacker" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/sightseer.webp" alt="Sightseer" /></div>
+      <div><img src="/pokemon-medals/general/gold/sightseer.webp" alt="Sightseer" /></div>
+      <div><img src="/pokemon-medals/general/silver/sightseer.webp" alt="Sightseer" /></div>
+      <div><img src="/pokemon-medals/general/bronze/sightseer.webp" alt="Sightseer" /></div>
+      <div><img src="/pokemon-medals/general/shadow/sightseer.webp" alt="Sightseer" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/fisher.webp" alt="Fisher" /></div>
+      <div><img src="/pokemon-medals/general/gold/fisher.webp" alt="Fisher" /></div>
+      <div><img src="/pokemon-medals/general/silver/fisher.webp" alt="Fisher" /></div>
+      <div><img src="/pokemon-medals/general/bronze/fisher.webp" alt="Fisher" /></div>
+      <div><img src="/pokemon-medals/general/shadow/fisher.webp" alt="Fisher" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/battle-girl.webp" alt="Battle Girl" /></div>
+      <div><img src="/pokemon-medals/general/gold/battle-girl.webp" alt="Battle Girl" /></div>
+      <div><img src="/pokemon-medals/general/silver/battle-girl.webp" alt="Battle Girl" /></div>
+      <div><img src="/pokemon-medals/general/bronze/battle-girl.webp" alt="Battle Girl" /></div>
+      <div><img src="/pokemon-medals/general/shadow/battle-girl.webp" alt="Battle Girl" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/ace-trainer.webp" alt="Ace Trainer" /></div>
+      <div><img src="/pokemon-medals/general/gold/ace-trainer.webp" alt="Ace Trainer" /></div>
+      <div><img src="/pokemon-medals/general/silver/ace-trainer.webp" alt="Ace Trainer" /></div>
+      <div><img src="/pokemon-medals/general/bronze/ace-trainer.webp" alt="Ace Trainer" /></div>
+      <div><img src="/pokemon-medals/general/shadow/ace-trainer.webp" alt="Ace Trainer" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/youngster.webp" alt="Youngster" /></div>
+      <div><img src="/pokemon-medals/general/gold/youngster.webp" alt="Youngster" /></div>
+      <div><img src="/pokemon-medals/general/silver/youngster.webp" alt="Youngster" /></div>
+      <div><img src="/pokemon-medals/general/bronze/youngster.webp" alt="Youngster" /></div>
+      <div><img src="/pokemon-medals/general/shadow/youngster.webp" alt="Youngster" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/pikachu-fan.webp" alt="Pikachu Fan" /></div>
+      <div><img src="/pokemon-medals/general/gold/pikachu-fan.webp" alt="Pikachu Fan" /></div>
+      <div><img src="/pokemon-medals/general/silver/pikachu-fan.webp" alt="Pikachu Fan" /></div>
+      <div><img src="/pokemon-medals/general/bronze/pikachu-fan.webp" alt="Pikachu Fan" /></div>
+      <div><img src="/pokemon-medals/general/shadow/pikachu-fan.webp" alt="Pikachu Fan" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/unown.webp" alt="Unown" /></div>
+      <div><img src="/pokemon-medals/general/gold/unown.webp" alt="Unown" /></div>
+      <div><img src="/pokemon-medals/general/silver/unown.webp" alt="Unown" /></div>
+      <div><img src="/pokemon-medals/general/bronze/unown.webp" alt="Unown" /></div>
+      <div><img src="/pokemon-medals/general/shadow/unown.webp" alt="Unown" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/johto.webp" alt="Johto" /></div>
+      <div><img src="/pokemon-medals/general/gold/johto.webp" alt="Johto" /></div>
+      <div><img src="/pokemon-medals/general/silver/johto.webp" alt="Johto" /></div>
+      <div><img src="/pokemon-medals/general/bronze/johto.webp" alt="Johto" /></div>
+      <div><img src="/pokemon-medals/general/shadow/johto.webp" alt="Johto" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/champion.webp" alt="Champion" /></div>
+      <div><img src="/pokemon-medals/general/gold/champion.webp" alt="Champion" /></div>
+      <div><img src="/pokemon-medals/general/silver/champion.webp" alt="Champion" /></div>
+      <div><img src="/pokemon-medals/general/bronze/champion.webp" alt="Champion" /></div>
+      <div><img src="/pokemon-medals/general/shadow/champion.webp" alt="Champion" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/battle-legend.webp" alt="Battle Legend" /></div>
+      <div><img src="/pokemon-medals/general/gold/battle-legend.webp" alt="Battle Legend" /></div>
+      <div><img src="/pokemon-medals/general/silver/battle-legend.webp" alt="Battle Legend" /></div>
+      <div><img src="/pokemon-medals/general/bronze/battle-legend.webp" alt="Battle Legend" /></div>
+      <div><img src="/pokemon-medals/general/shadow/battle-legend.webp" alt="Battle Legend" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/berry-master.webp" alt="Berry Master" /></div>
+      <div><img src="/pokemon-medals/general/gold/berry-master.webp" alt="Berry Master" /></div>
+      <div><img src="/pokemon-medals/general/silver/berry-master.webp" alt="Berry Master" /></div>
+      <div><img src="/pokemon-medals/general/bronze/berry-master.webp" alt="Berry Master" /></div>
+      <div><img src="/pokemon-medals/general/shadow/berry-master.webp" alt="Berry Master" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/gym-leader.webp" alt="Gym Leader" /></div>
+      <div><img src="/pokemon-medals/general/gold/gym-leader.webp" alt="Gym Leader" /></div>
+      <div><img src="/pokemon-medals/general/silver/gym-leader.webp" alt="Gym Leader" /></div>
+      <div><img src="/pokemon-medals/general/bronze/gym-leader.webp" alt="Gym Leader" /></div>
+      <div><img src="/pokemon-medals/general/shadow/gym-leader.webp" alt="Gym Leader" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/hoenn.webp" alt="Hoenn" /></div>
+      <div><img src="/pokemon-medals/general/gold/hoenn.webp" alt="Hoenn" /></div>
+      <div><img src="/pokemon-medals/general/silver/hoenn.webp" alt="Hoenn" /></div>
+      <div><img src="/pokemon-medals/general/bronze/hoenn.webp" alt="Hoenn" /></div>
+      <div><img src="/pokemon-medals/general/shadow/hoenn.webp" alt="Hoenn" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/pokemon-ranger.webp" alt="Pokémon Ranger" /></div>
+      <div><img src="/pokemon-medals/general/gold/pokemon-ranger.webp" alt="Pokémon Ranger" /></div>
+      <div><img src="/pokemon-medals/general/silver/pokemon-ranger.webp" alt="Pokémon Ranger" /></div>
+      <div><img src="/pokemon-medals/general/bronze/pokemon-ranger.webp" alt="Pokémon Ranger" /></div>
+      <div><img src="/pokemon-medals/general/shadow/pokemon-ranger.webp" alt="Pokémon Ranger" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/idol.webp" alt="Idol" /></div>
+      <div><img src="/pokemon-medals/general/gold/idol.webp" alt="Idol" /></div>
+      <div><img src="/pokemon-medals/general/silver/idol.webp" alt="Idol" /></div>
+      <div><img src="/pokemon-medals/general/bronze/idol.webp" alt="Idol" /></div>
+      <div><img src="/pokemon-medals/general/shadow/idol.webp" alt="Idol" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/gentleman.webp" alt="Gentleman" /></div>
+      <div><img src="/pokemon-medals/general/gold/gentleman.webp" alt="Gentleman" /></div>
+      <div><img src="/pokemon-medals/general/silver/gentleman.webp" alt="Gentleman" /></div>
+      <div><img src="/pokemon-medals/general/bronze/gentleman.webp" alt="Gentleman" /></div>
+      <div><img src="/pokemon-medals/general/shadow/gentleman.webp" alt="Gentleman" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/pilot.webp" alt="Pilot" /></div>
+      <div><img src="/pokemon-medals/general/gold/pilot.webp" alt="Pilot" /></div>
+      <div><img src="/pokemon-medals/general/silver/pilot.webp" alt="Pilot" /></div>
+      <div><img src="/pokemon-medals/general/bronze/pilot.webp" alt="Pilot" /></div>
+      <div><img src="/pokemon-medals/general/shadow/pilot.webp" alt="Pilot" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/sinnoh.webp" alt="Sinnoh" /></div>
+      <div><img src="/pokemon-medals/general/gold/sinnoh.webp" alt="Sinnoh" /></div>
+      <div><img src="/pokemon-medals/general/silver/sinnoh.webp" alt="Sinnoh" /></div>
+      <div><img src="/pokemon-medals/general/bronze/sinnoh.webp" alt="Sinnoh" /></div>
+      <div><img src="/pokemon-medals/general/shadow/sinnoh.webp" alt="Sinnoh" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/great-league-veteran.webp" alt="Great League Veteran" /></div>
+      <div><img src="/pokemon-medals/general/gold/great-league-veteran.webp" alt="Great League Veteran" /></div>
+      <div><img src="/pokemon-medals/general/silver/great-league-veteran.webp" alt="Great League Veteran" /></div>
+      <div><img src="/pokemon-medals/general/bronze/great-league-veteran.webp" alt="Great League Veteran" /></div>
+      <div><img src="/pokemon-medals/general/shadow/great-league-veteran.webp" alt="Great League Veteran" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/ultra-league-veteran.webp" alt="Ultra League Veteran" /></div>
+      <div><img src="/pokemon-medals/general/gold/ultra-league-veteran.webp" alt="Ultra League Veteran" /></div>
+      <div><img src="/pokemon-medals/general/silver/ultra-league-veteran.webp" alt="Ultra League Veteran" /></div>
+      <div><img src="/pokemon-medals/general/bronze/ultra-league-veteran.webp" alt="Ultra League Veteran" /></div>
+      <div><img src="/pokemon-medals/general/shadow/ultra-league-veteran.webp" alt="Ultra League Veteran" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/master-league-veteran.webp" alt="Master League Veteran" /></div>
+      <div><img src="/pokemon-medals/general/gold/master-league-veteran.webp" alt="Master League Veteran" /></div>
+      <div><img src="/pokemon-medals/general/silver/master-league-veteran.webp" alt="Master League Veteran" /></div>
+      <div><img src="/pokemon-medals/general/bronze/master-league-veteran.webp" alt="Master League Veteran" /></div>
+      <div><img src="/pokemon-medals/general/shadow/master-league-veteran.webp" alt="Master League Veteran" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/cameraman.webp" alt="Cameraman" /></div>
+      <div><img src="/pokemon-medals/general/gold/cameraman.webp" alt="Cameraman" /></div>
+      <div><img src="/pokemon-medals/general/silver/cameraman.webp" alt="Cameraman" /></div>
+      <div><img src="/pokemon-medals/general/bronze/cameraman.webp" alt="Cameraman" /></div>
+      <div><img src="/pokemon-medals/general/shadow/cameraman.webp" alt="Cameraman" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/unova.webp" alt="Unova" /></div>
+      <div><img src="/pokemon-medals/general/gold/unova.webp" alt="Unova" /></div>
+      <div><img src="/pokemon-medals/general/silver/unova.webp" alt="Unova" /></div>
+      <div><img src="/pokemon-medals/general/bronze/unova.webp" alt="Unova" /></div>
+      <div><img src="/pokemon-medals/general/shadow/unova.webp" alt="Unova" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/purifier.webp" alt="Purifier" /></div>
+      <div><img src="/pokemon-medals/general/gold/purifier.webp" alt="Purifier" /></div>
+      <div><img src="/pokemon-medals/general/silver/purifier.webp" alt="Purifier" /></div>
+      <div><img src="/pokemon-medals/general/bronze/purifier.webp" alt="Purifier" /></div>
+      <div><img src="/pokemon-medals/general/shadow/purifier.webp" alt="Purifier" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/hero.webp" alt="Hero" /></div>
+      <div><img src="/pokemon-medals/general/gold/hero.webp" alt="Hero" /></div>
+      <div><img src="/pokemon-medals/general/silver/hero.webp" alt="Hero" /></div>
+      <div><img src="/pokemon-medals/general/bronze/hero.webp" alt="Hero" /></div>
+      <div><img src="/pokemon-medals/general/shadow/hero.webp" alt="Hero" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/ultra-hero.webp" alt="Ultra Hero" /></div>
+      <div><img src="/pokemon-medals/general/gold/ultra-hero.webp" alt="Ultra Hero" /></div>
+      <div><img src="/pokemon-medals/general/silver/ultra-hero.webp" alt="Ultra Hero" /></div>
+      <div><img src="/pokemon-medals/general/bronze/ultra-hero.webp" alt="Ultra Hero" /></div>
+      <div><img src="/pokemon-medals/general/shadow/ultra-hero.webp" alt="Ultra Hero" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/best-buddy.webp" alt="Best Buddy" /></div>
+      <div><img src="/pokemon-medals/general/gold/best-buddy.webp" alt="Best Buddy" /></div>
+      <div><img src="/pokemon-medals/general/silver/best-buddy.webp" alt="Best Buddy" /></div>
+      <div><img src="/pokemon-medals/general/bronze/best-buddy.webp" alt="Best Buddy" /></div>
+      <div><img src="/pokemon-medals/general/shadow/best-buddy.webp" alt="Best Buddy" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/wayfarer.webp" alt="Wayfarer" /></div>
+      <div><img src="/pokemon-medals/general/gold/wayfarer.webp" alt="Wayfarer" /></div>
+      <div><img src="/pokemon-medals/general/silver/wayfarer.webp" alt="Wayfarer" /></div>
+      <div><img src="/pokemon-medals/general/bronze/wayfarer.webp" alt="Wayfarer" /></div>
+      <div><img src="/pokemon-medals/general/shadow/wayfarer.webp" alt="Wayfarer" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/kalos.webp" alt="Kalos" /></div>
+      <div><img src="/pokemon-medals/general/gold/kalos.webp" alt="Kalos" /></div>
+      <div><img src="/pokemon-medals/general/silver/kalos.webp" alt="Kalos" /></div>
+      <div><img src="/pokemon-medals/general/bronze/kalos.webp" alt="Kalos" /></div>
+      <div><img src="/pokemon-medals/general/shadow/kalos.webp" alt="Kalos" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/alola.webp" alt="Alola" /></div>
+      <div><img src="/pokemon-medals/general/gold/alola.webp" alt="Alola" /></div>
+      <div><img src="/pokemon-medals/general/silver/alola.webp" alt="Alola" /></div>
+      <div><img src="/pokemon-medals/general/bronze/alola.webp" alt="Alola" /></div>
+      <div><img src="/pokemon-medals/general/shadow/alola.webp" alt="Alola" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/galar.webp" alt="Galar" /></div>
+      <div><img src="/pokemon-medals/general/gold/galar.webp" alt="Galar" /></div>
+      <div><img src="/pokemon-medals/general/silver/galar.webp" alt="Galar" /></div>
+      <div><img src="/pokemon-medals/general/bronze/galar.webp" alt="Galar" /></div>
+      <div><img src="/pokemon-medals/general/shadow/galar.webp" alt="Galar" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/hisui.webp" alt="Hisui" /></div>
+      <div><img src="/pokemon-medals/general/gold/hisui.webp" alt="Hisui" /></div>
+      <div><img src="/pokemon-medals/general/silver/hisui.webp" alt="Hisui" /></div>
+      <div><img src="/pokemon-medals/general/bronze/hisui.webp" alt="Hisui" /></div>
+      <div><img src="/pokemon-medals/general/shadow/hisui.webp" alt="Hisui" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/triathlete.webp" alt="Triathlete" /></div>
+      <div><img src="/pokemon-medals/general/gold/triathlete.webp" alt="Triathlete" /></div>
+      <div><img src="/pokemon-medals/general/silver/triathlete.webp" alt="Triathlete" /></div>
+      <div><img src="/pokemon-medals/general/bronze/triathlete.webp" alt="Triathlete" /></div>
+      <div><img src="/pokemon-medals/general/shadow/triathlete.webp" alt="Triathlete" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/rising-star.webp" alt="Rising Star" /></div>
+      <div><img src="/pokemon-medals/general/gold/rising-star.webp" alt="Rising Star" /></div>
+      <div><img src="/pokemon-medals/general/silver/rising-star.webp" alt="Rising Star" /></div>
+      <div><img src="/pokemon-medals/general/bronze/rising-star.webp" alt="Rising Star" /></div>
+      <div><img src="/pokemon-medals/general/shadow/rising-star.webp" alt="Rising Star" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/rising-star-duo.webp" alt="Rising Star Duo" /></div>
+      <div><img src="/pokemon-medals/general/gold/rising-star-duo.webp" alt="Rising Star Duo" /></div>
+      <div><img src="/pokemon-medals/general/silver/rising-star-duo.webp" alt="Rising Star Duo" /></div>
+      <div><img src="/pokemon-medals/general/bronze/rising-star-duo.webp" alt="Rising Star Duo" /></div>
+      <div><img src="/pokemon-medals/general/shadow/rising-star-duo.webp" alt="Rising Star Duo" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/picnicker.webp" alt="Picnicker" /></div>
+      <div><img src="/pokemon-medals/general/gold/picnicker.webp" alt="Picnicker" /></div>
+      <div><img src="/pokemon-medals/general/silver/picnicker.webp" alt="Picnicker" /></div>
+      <div><img src="/pokemon-medals/general/bronze/picnicker.webp" alt="Picnicker" /></div>
+      <div><img src="/pokemon-medals/general/shadow/picnicker.webp" alt="Picnicker" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/successor.webp" alt="Successor" /></div>
+      <div><img src="/pokemon-medals/general/gold/successor.webp" alt="Successor" /></div>
+      <div><img src="/pokemon-medals/general/silver/successor.webp" alt="Successor" /></div>
+      <div><img src="/pokemon-medals/general/bronze/successor.webp" alt="Successor" /></div>
+      <div><img src="/pokemon-medals/general/shadow/successor.webp" alt="Successor" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/mega-evolution-guru.webp" alt="Mega Evolution Guru" /></div>
+      <div><img src="/pokemon-medals/general/gold/mega-evolution-guru.webp" alt="Mega Evolution Guru" /></div>
+      <div><img src="/pokemon-medals/general/silver/mega-evolution-guru.webp" alt="Mega Evolution Guru" /></div>
+      <div><img src="/pokemon-medals/general/bronze/mega-evolution-guru.webp" alt="Mega Evolution Guru" /></div>
+      <div><img src="/pokemon-medals/general/shadow/mega-evolution-guru.webp" alt="Mega Evolution Guru" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/friend-finder.webp" alt="Friend Finder" /></div>
+      <div><img src="/pokemon-medals/general/gold/friend-finder.webp" alt="Friend Finder" /></div>
+      <div><img src="/pokemon-medals/general/silver/friend-finder.webp" alt="Friend Finder" /></div>
+      <div><img src="/pokemon-medals/general/bronze/friend-finder.webp" alt="Friend Finder" /></div>
+      <div><img src="/pokemon-medals/general/shadow/friend-finder.webp" alt="Friend Finder" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/raid-expert.webp" alt="Raid Expert" /></div>
+      <div><img src="/pokemon-medals/general/gold/raid-expert.webp" alt="Raid Expert" /></div>
+      <div><img src="/pokemon-medals/general/silver/raid-expert.webp" alt="Raid Expert" /></div>
+      <div><img src="/pokemon-medals/general/bronze/raid-expert.webp" alt="Raid Expert" /></div>
+      <div><img src="/pokemon-medals/general/shadow/raid-expert.webp" alt="Raid Expert" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/tiny-pokemon-collector.webp" alt="Tiny Pokémon Collector" /></div>
+      <div><img src="/pokemon-medals/general/gold/tiny-pokemon-collector.webp" alt="Tiny Pokémon Collector" /></div>
+      <div><img src="/pokemon-medals/general/silver/tiny-pokemon-collector.webp" alt="Tiny Pokémon Collector" /></div>
+      <div><img src="/pokemon-medals/general/bronze/tiny-pokemon-collector.webp" alt="Tiny Pokémon Collector" /></div>
+      <div><img src="/pokemon-medals/general/shadow/tiny-pokemon-collector.webp" alt="Tiny Pokémon Collector" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/jumbo-pokemon-collector.webp" alt="Jumbo Pokémon Collector" /></div>
+      <div><img src="/pokemon-medals/general/gold/jumbo-pokemon-collector.webp" alt="Jumbo Pokémon Collector" /></div>
+      <div><img src="/pokemon-medals/general/silver/jumbo-pokemon-collector.webp" alt="Jumbo Pokémon Collector" /></div>
+      <div><img src="/pokemon-medals/general/bronze/jumbo-pokemon-collector.webp" alt="Jumbo Pokémon Collector" /></div>
+      <div><img src="/pokemon-medals/general/shadow/jumbo-pokemon-collector.webp" alt="Jumbo Pokémon Collector" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/vivillon-collector.webp" alt="Vivillon Collector" /></div>
+      <div><img src="/pokemon-medals/general/gold/vivillon-collector.webp" alt="Vivillon Collector" /></div>
+      <div><img src="/pokemon-medals/general/silver/vivillon-collector.webp" alt="Vivillon Collector" /></div>
+      <div><img src="/pokemon-medals/general/bronze/vivillon-collector.webp" alt="Vivillon Collector" /></div>
+      <div><img src="/pokemon-medals/general/shadow/vivillon-collector.webp" alt="Vivillon Collector" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/scanner.webp" alt="Scanner" /></div>
+      <div><img src="/pokemon-medals/general/gold/scanner.webp" alt="Scanner" /></div>
+      <div><img src="/pokemon-medals/general/silver/scanner.webp" alt="Scanner" /></div>
+      <div><img src="/pokemon-medals/general/bronze/scanner.webp" alt="Scanner" /></div>
+      <div><img src="/pokemon-medals/general/shadow/scanner.webp" alt="Scanner" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/battle.webp" alt="Battle" /></div>
+      <div><img src="/pokemon-medals/general/gold/battle.webp" alt="Battle" /></div>
+      <div><img src="/pokemon-medals/general/silver/battle.webp" alt="Battle" /></div>
+      <div><img src="/pokemon-medals/general/bronze/battle.webp" alt="Battle" /></div>
+      <div><img src="/pokemon-medals/general/shadow/battle.webp" alt="Battle" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/defense-battles-won.webp" alt="Defense Battles Won" /></div>
+      <div><img src="/pokemon-medals/general/gold/defense-battles-won.webp" alt="Defense Battles Won" /></div>
+      <div><img src="/pokemon-medals/general/silver/defense-battles-won.webp" alt="Defense Battles Won" /></div>
+      <div><img src="/pokemon-medals/general/bronze/defense-battles-won.webp" alt="Defense Battles Won" /></div>
+      <div><img src="/pokemon-medals/general/shadow/defense-battles-won.webp" alt="Defense Battles Won" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/routemaker.webp" alt="" /></div>
+      <div><img src="/pokemon-medals/general/gold/routemaker.webp" alt="" /></div>
+      <div><img src="/pokemon-medals/general/silver/routemaker.webp" alt="" /></div>
+      <div><img src="/pokemon-medals/general/bronze/routemaker.webp" alt="" /></div>
+      <div><img src="/pokemon-medals/general/shadow/routemaker.webp" alt="" /></div>
+      
+      <div><img src="/pokemon-medals/general/platinum/route.webp" alt="" /></div>
+      <div><img src="/pokemon-medals/general/gold/route.webp" alt="" /></div>
+      <div><img src="/pokemon-medals/general/silver/route.webp" alt="" /></div>
+      <div><img src="/pokemon-medals/general/bronze/route.webp" alt="" /></div>
+      <div><img src="/pokemon-medals/general/shadow/route.webp" alt="" /></div>
+      
+      
+      <div><img src="/pokemon-medals/type/platinum/bug-catcher.webp" alt="Bug Catcher" /></div>
+      <div><img src="/pokemon-medals/type/gold/bug-catcher.webp" alt="Bug Catcher" /></div>
+      <div><img src="/pokemon-medals/type/silver/bug-catcher.webp" alt="Bug Catcher" /></div>
+      <div><img src="/pokemon-medals/type/bronze/bug-catcher.webp" alt="Bug Catcher" /></div>
+      <div><img src="/pokemon-medals/type/shadow/bug-catcher.webp" alt="Bug Catcher" /></div>
+      
+      <div><img src="/pokemon-medals/type/platinum/delinquent.webp" alt="Delinquent" /></div>
+      <div><img src="/pokemon-medals/type/gold/delinquent.webp" alt="Delinquent" /></div>
+      <div><img src="/pokemon-medals/type/silver/delinquent.webp" alt="Delinquent" /></div>
+      <div><img src="/pokemon-medals/type/bronze/delinquent.webp" alt="Delinquent" /></div>
+      <div><img src="/pokemon-medals/type/shadow/delinquent.webp" alt="Delinquent" /></div>
+      
+      <div><img src="/pokemon-medals/type/platinum/dragon-tamer.webp" alt="Dragon Tamer" /></div>
+      <div><img src="/pokemon-medals/type/gold/dragon-tamer.webp" alt="Dragon Tamer" /></div>
+      <div><img src="/pokemon-medals/type/silver/dragon-tamer.webp" alt="Dragon Tamer" /></div>
+      <div><img src="/pokemon-medals/type/bronze/dragon-tamer.webp" alt="Dragon Tamer" /></div>
+      <div><img src="/pokemon-medals/type/shadow/dragon-tamer.webp" alt="Dragon Tamer" /></div>
+      
+      <div><img src="/pokemon-medals/type/platinum/rocker.webp" alt="Rocker" /></div>
+      <div><img src="/pokemon-medals/type/gold/rocker.webp" alt="Rocker" /></div>
+      <div><img src="/pokemon-medals/type/silver/rocker.webp" alt="Rocker" /></div>
+      <div><img src="/pokemon-medals/type/bronze/rocker.webp" alt="Rocker" /></div>
+      <div><img src="/pokemon-medals/type/shadow/rocker.webp" alt="Rocker" /></div>
+      
+      <div><img src="/pokemon-medals/type/platinum/fairy-tale-girl.webp" alt="Fairy-Tale Girl" /></div>
+      <div><img src="/pokemon-medals/type/gold/fairy-tale-girl.webp" alt="Fairy-Tale Girl" /></div>
+      <div><img src="/pokemon-medals/type/silver/fairy-tale-girl.webp" alt="Fairy-Tale Girl" /></div>
+      <div><img src="/pokemon-medals/type/bronze/fairy-tale-girl.webp" alt="Fairy-Tale Girl" /></div>
+      <div><img src="/pokemon-medals/type/shadow/fairy-tale-girl.webp" alt="Fairy-Tale Girl" /></div>
+      
+      <div><img src="/pokemon-medals/type/platinum/black-belt.webp" alt="Black Belt" /></div>
+      <div><img src="/pokemon-medals/type/gold/black-belt.webp" alt="Black Belt" /></div>
+      <div><img src="/pokemon-medals/type/silver/black-belt.webp" alt="Black Belt" /></div>
+      <div><img src="/pokemon-medals/type/bronze/black-belt.webp" alt="Black Belt" /></div>
+      <div><img src="/pokemon-medals/type/shadow/black-belt.webp" alt="Black Belt" /></div>
+      
+      <div><img src="/pokemon-medals/type/platinum/kindler.webp" alt="Kindler" /></div>
+      <div><img src="/pokemon-medals/type/gold/kindler.webp" alt="Kindler" /></div>
+      <div><img src="/pokemon-medals/type/silver/kindler.webp" alt="Kindler" /></div>
+      <div><img src="/pokemon-medals/type/bronze/kindler.webp" alt="Kindler" /></div>
+      <div><img src="/pokemon-medals/type/shadow/kindler.webp" alt="Kindler" /></div>
+      
+      <div><img src="/pokemon-medals/type/platinum/bird-keeper.webp" alt="Bird Keeper" /></div>
+      <div><img src="/pokemon-medals/type/gold/bird-keeper.webp" alt="Bird Keeper" /></div>
+      <div><img src="/pokemon-medals/type/silver/bird-keeper.webp" alt="Bird Keeper" /></div>
+      <div><img src="/pokemon-medals/type/bronze/bird-keeper.webp" alt="Bird Keeper" /></div>
+      <div><img src="/pokemon-medals/type/shadow/bird-keeper.webp" alt="Bird Keeper" /></div>
+      
+      <div><img src="/pokemon-medals/type/platinum/hex-maniac.webp" alt="Hex Maniac" /></div>
+      <div><img src="/pokemon-medals/type/gold/hex-maniac.webp" alt="Hex Maniac" /></div>
+      <div><img src="/pokemon-medals/type/silver/hex-maniac.webp" alt="Hex Maniac" /></div>
+      <div><img src="/pokemon-medals/type/bronze/hex-maniac.webp" alt="Hex Maniac" /></div>
+      <div><img src="/pokemon-medals/type/shadow/hex-maniac.webp" alt="Hex Maniac" /></div>
+      
+      <div><img src="/pokemon-medals/type/platinum/gardener.webp" alt="Gardener" /></div>
+      <div><img src="/pokemon-medals/type/gold/gardener.webp" alt="Gardener" /></div>
+      <div><img src="/pokemon-medals/type/silver/gardener.webp" alt="Gardener" /></div>
+      <div><img src="/pokemon-medals/type/bronze/gardener.webp" alt="Gardener" /></div>
+      <div><img src="/pokemon-medals/type/shadow/gardener.webp" alt="Gardener" /></div>
+      
+      <div><img src="/pokemon-medals/type/platinum/ruin-maniac.webp" alt="Ruin Maniac" /></div>
+      <div><img src="/pokemon-medals/type/gold/ruin-maniac.webp" alt="Ruin Maniac" /></div>
+      <div><img src="/pokemon-medals/type/silver/ruin-maniac.webp" alt="Ruin Maniac" /></div>
+      <div><img src="/pokemon-medals/type/bronze/ruin-maniac.webp" alt="Ruin Maniac" /></div>
+      <div><img src="/pokemon-medals/type/shadow/ruin-maniac.webp" alt="Ruin Maniac" /></div>
+      
+      <div><img src="/pokemon-medals/type/platinum/skier.webp" alt="Skier" /></div>
+      <div><img src="/pokemon-medals/type/gold/skier.webp" alt="Skier" /></div>
+      <div><img src="/pokemon-medals/type/silver/skier.webp" alt="Skier" /></div>
+      <div><img src="/pokemon-medals/type/bronze/skier.webp" alt="Skier" /></div>
+      <div><img src="/pokemon-medals/type/shadow/skier.webp" alt="Skier" /></div>
+      
+      <div><img src="/pokemon-medals/type/platinum/schoolkid.webp" alt="Schoolkid" /></div>
+      <div><img src="/pokemon-medals/type/gold/schoolkid.webp" alt="Schoolkid" /></div>
+      <div><img src="/pokemon-medals/type/silver/schoolkid.webp" alt="Schoolkid" /></div>
+      <div><img src="/pokemon-medals/type/bronze/schoolkid.webp" alt="Schoolkid" /></div>
+      <div><img src="/pokemon-medals/type/shadow/schoolkid.webp" alt="Schoolkid" /></div>
+      
+      <div><img src="/pokemon-medals/type/platinum/punk-girl.webp" alt="Punk Girl" /></div>
+      <div><img src="/pokemon-medals/type/gold/punk-girl.webp" alt="Punk Girl" /></div>
+      <div><img src="/pokemon-medals/type/silver/punk-girl.webp" alt="Punk Girl" /></div>
+      <div><img src="/pokemon-medals/type/bronze/punk-girl.webp" alt="Punk Girl" /></div>
+      <div><img src="/pokemon-medals/type/shadow/punk-girl.webp" alt="Punk Girl" /></div>
+      
+      <div><img src="/pokemon-medals/type/platinum/psychic.webp" alt="Psychic" /></div>
+      <div><img src="/pokemon-medals/type/gold/psychic.webp" alt="Psychic" /></div>
+      <div><img src="/pokemon-medals/type/silver/psychic.webp" alt="Psychic" /></div>
+      <div><img src="/pokemon-medals/type/bronze/psychic.webp" alt="Psychic" /></div>
+      <div><img src="/pokemon-medals/type/shadow/psychic.webp" alt="Psychic" /></div>
+      
+      <div><img src="/pokemon-medals/type/platinum/hiker.webp" alt="Hiker" /></div>
+      <div><img src="/pokemon-medals/type/gold/hiker.webp" alt="Hiker" /></div>
+      <div><img src="/pokemon-medals/type/silver/hiker.webp" alt="Hiker" /></div>
+      <div><img src="/pokemon-medals/type/bronze/hiker.webp" alt="Hiker" /></div>
+      <div><img src="/pokemon-medals/type/shadow/hiker.webp" alt="Hiker" /></div>
+      
+      <div><img src="/pokemon-medals/type/platinum/rail-staff.webp" alt="Rail Staff" /></div>
+      <div><img src="/pokemon-medals/type/gold/rail-staff.webp" alt="Rail Staff" /></div>
+      <div><img src="/pokemon-medals/type/silver/rail-staff.webp" alt="Rail Staff" /></div>
+      <div><img src="/pokemon-medals/type/bronze/rail-staff.webp" alt="Rail Staff" /></div>
+      <div><img src="/pokemon-medals/type/shadow/rail-staff.webp" alt="Rail Staff" /></div>
+      
+      <div><img src="/pokemon-medals/type/platinum/swimmer.webp" alt="Swimmer" /></div>
+      <div><img src="/pokemon-medals/type/gold/swimmer.webp" alt="Swimmer" /></div>
+      <div><img src="/pokemon-medals/type/silver/swimmer.webp" alt="Swimmer" /></div>
+      <div><img src="/pokemon-medals/type/bronze/swimmer.webp" alt="Swimmer" /></div>
+      <div><img src="/pokemon-medals/type/shadow/swimmer.webp" alt="Swimmer" /></div>
+      
+    </div>
+  </body>
+</html>
