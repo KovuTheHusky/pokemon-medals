@@ -43,6 +43,8 @@ tables.each do |table|
 
     if cols.length() == 7
 
+      next if cols[2].css('a.image').length() == 0
+
       name = cols[0].text.strip
       filename = name.downcase.sub(' ', '')
 
@@ -64,8 +66,6 @@ tables.each do |table|
         folder = 'general/'
         general[filename] = name
       end
-
-      next if cols[2].css('a.image').length() == 0
 
       webp_filepath = File.join(folder + 'shadow/', filename + '.webp')
       data = URI.open(cols[2].css('a.image')[0]['href'])
