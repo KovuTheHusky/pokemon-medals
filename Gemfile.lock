@@ -52,7 +52,7 @@ GEM
     mercenary (0.4.0)
     mini_magick (5.0.1)
     mini_portile2 (2.8.8)
-    nokogiri (1.16.8)
+    nokogiri (1.17.2)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     pathutil (0.16.2)
@@ -87,7 +87,7 @@ DEPENDENCIES
   jekyll-feed (~> 0.17)
   json (~> 2.8)
   mini_magick (~> 5.0)
-  nokogiri (~> 1.16)
+  nokogiri (~> 1.17)
   tzinfo (~> 2.0)
   tzinfo-data
   wdm (~> 0.2.0)
