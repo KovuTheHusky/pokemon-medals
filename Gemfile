@@ -28,5 +28,5 @@ end
 gem "wdm", "~> 0.2.0", :install_if => Gem.win_platform?
 
 gem "json", "~> 2.9"
-gem "nokogiri", "~> 1.17"
+gem "nokogiri", "~> 1.18"
 gem "mini_magick", "~> 5.0"
