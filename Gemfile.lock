@@ -50,7 +50,7 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.4.0)
-    mini_magick (5.0.1)
+    mini_magick (5.1.0)
     mini_portile2 (2.8.8)
     nokogiri (1.18.1)
       mini_portile2 (~> 2.8.2)
@@ -86,7 +86,7 @@ DEPENDENCIES
   jekyll (~> 4.3.3)
   jekyll-feed (~> 0.17)
   json (~> 2.9)
-  mini_magick (~> 5.0)
+  mini_magick (~> 5.1)
   nokogiri (~> 1.18)
   tzinfo (~> 2.0)
   tzinfo-data
