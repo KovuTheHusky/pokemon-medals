@@ -292,6 +292,40 @@ tables.each_with_index do |table, index|
   end
 end
 
+# =========================================================
+# MANUAL INJECTIONS (Local Files)
+# =========================================================
+puts "Processing Manual Injections..."
+
+# Configuration: Map "Event Name" to "Your Local File Path"
+manual_medals = {
+  "Pokémon GO Fest 2023 New York City - Addon" => "manual_assets/2023-nyc-addon.webp",
+  "Pokémon GO Fest 2023 New York City - City"  => "manual_assets/2023-nyc-city.webp",
+  "Pokémon GO Fest 2023 New York City - Park"  => "manual_assets/2023-nyc-park.webp"
+}
+
+manual_medals.each do |name, source_path|
+  if File.exist?(source_path)
+    safe_name = clean_filename(name)
+    dest_path = "other/#{safe_name}.webp"
+
+    begin
+      # Open local file, convert to webp, save to destination
+      image = MiniMagick::Image.open(source_path)
+      image.format 'webp'
+      image.write dest_path
+      
+      # Important: Register it in the JSON data
+      data_store[:other][safe_name] = name
+      puts "  [MANUAL] #{name} -> #{safe_name}.webp"
+    rescue => e
+      puts "    [!] Error processing #{source_path}: #{e.message}"
+    end
+  else
+    puts "    [!] Warning: File not found at #{source_path}"
+  end
+end
+
 puts "\nSaving JSON data..."
 FileUtils.mkdir_p('_data/')
 File.write('_data/general.json', JSON.pretty_generate(data_store[:general]))
