@@ -13,6 +13,7 @@ jobs:
           bundler-cache: true
       - run: gem install bundler
       - run: bundle install
+      - run: ruby build.rb
       - run: bundle exec jekyll build
       - uses: actions/upload-pages-artifact@v3
   deploy:
