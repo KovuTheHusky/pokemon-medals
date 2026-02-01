@@ -7,8 +7,6 @@ require 'shellwords'
 # --- CONFIGURATION ---
 URL = 'https://bulbapedia.bulbagarden.net/wiki/Medal_(GO)'
 USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-
-# Width of the ring to remove (in pixels) for the shadow icon
 SHADOW_RING_WIDTH = 28
 
 # Define output folders
@@ -17,7 +15,6 @@ folders = %w[
   type/shadow type/bronze type/silver type/gold type/platinum
   other
 ]
-
 folders.each { |f| FileUtils.mkdir_p(f) }
 
 data_store = { general: {}, type: {}, other: {} }
@@ -36,7 +33,7 @@ end
 
 def clean_filename(text)
   normalized = normalize_text(text)
-  normalized.downcase
+  slug = normalized.downcase
       .gsub('%c3%a9', 'e')
       .gsub('é', 'e')
       .gsub("'", "")
@@ -47,13 +44,22 @@ def clean_filename(text)
       .gsub(/-+/, '-')
       .sub(/^-/, '')
       .sub(/-$/, '')
+  # Truncate to 100 chars to avoid filesystem errors
+  slug[0...100].sub(/-$/, '') 
+end
+
+def extract_clean_name(node)
+  return "" unless node
+  copy = node.dup
+  copy.css('small, sup, span').remove 
+  copy.search('br').each { |br| br.replace(" ") }
+  normalize_text(copy.text)
 end
 
 def fetch_with_curl(url)
   cmd = "curl -L -s -H 'User-Agent: #{USER_AGENT}' " \
         "-H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' " \
         "#{Shellwords.escape(url)}"
-  
   content = `#{cmd}`
   return content if $?.success? && !content.empty?
   raise "Curl failed to fetch #{url}"
@@ -81,7 +87,7 @@ def download_image(url, filepath)
       File.delete(temp_file)
       return true
     rescue => e
-      puts "    [!] Image Error: #{e.message}"
+      puts "    [!] Image Error (#{filepath}): #{e.message}"
       File.delete(temp_file) if File.exist?(temp_file)
       return false
     end
@@ -91,42 +97,39 @@ def download_image(url, filepath)
   end
 end
 
-# --- SHADOW ICON GENERATOR (Radial FX) ---
 def generate_shadow_icon(source_filepath, dest_filepath)
   return unless File.exist?(source_filepath)
-  
-  # Calculate cutoff radius
-  # Center is 128 (half of 256). Radius = Center - RingWidth.
   cutoff_radius = 128 - SHADOW_RING_WIDTH
   
   begin
     image = MiniMagick::Image.open(source_filepath)
     image.format 'webp'
-    
     image.combine_options do |c|
-      # 1. Force Resize to 256x256 first
       c.resize '256x256!'
-      
-      # 2. Colorize to Target Hex
       c.fill '#efefef'
       c.colorize '100'
-      
-      # 3. Apply Circular Mask
-      #    We inject the calculated cutoff_radius into the FX formula
       c.fx "hypot(i-w/2, j-h/2) > #{cutoff_radius} ? 0 : u"
     end
-    
     image.write dest_filepath
   rescue => e
     puts "    [!] Shadow Generation Error: #{e.message}"
   end
 end
 
+def process_event_medal(raw_name, safe_name, img_url, data_store)
+  # NOTE: We do NOT append numbers for collisions here (removed per request).
+  # If 'safe_name' exists, we overwrite/reuse it.
+  
+  filepath = "other/#{safe_name}.webp"
+  data_store[:other][safe_name] = raw_name
+  puts "  [OTHER] #{raw_name} -> #{safe_name}.webp"
+  download_image(img_url, filepath)
+end
+
 # --- MAIN LOGIC ---
 
 puts "---------------------------------------------------"
 puts "Scraping Bulbapedia: #{URL}"
-puts "Shadow Ring Width Configured to: #{SHADOW_RING_WIDTH}px"
 puts "---------------------------------------------------"
 
 begin
@@ -141,18 +144,16 @@ tables = doc.css('table')
 puts "Found #{tables.length} tables. Analyzing..."
 
 tables.each_with_index do |table, index|
-
-  if table.text.include?('Project Sidegames')
-    puts "Skipping 'Project Sidegames' table..."
-    next
-  end
+  next if table.text.include?('Project Sidegames')
 
   headers = table.css('th').map { |th| th.text.strip.downcase }
   is_tiered_table = headers.any? { |h| h.include?('bronze') } && headers.any? { |h| h.include?('gold') }
 
   rows = table.css('tr')
   
-  # --- CASE A: TIERED MEDALS ---
+  # =========================================================
+  # CASE A: TIERED MEDALS
+  # =========================================================
   if is_tiered_table
     puts "Processing Tiered Table (Index #{index})..."
     
@@ -175,7 +176,7 @@ tables.each_with_index do |table, index|
       name_node = row.css('th').first || cols[col_map[:name]]
       next unless name_node
       
-      raw_name = normalize_text(name_node.text)
+      raw_name = extract_clean_name(name_node)
       next if raw_name.empty? || raw_name.downcase == 'medal'
 
       safe_name = clean_filename(raw_name)
@@ -198,26 +199,29 @@ tables.each_with_index do |table, index|
       [:bronze, :silver, :gold, :platinum].each do |tier|
         idx = col_map[tier]
         next unless idx && cols[idx]
+        
         img_tag = cols[idx].css('img').first
         next unless img_tag
+        img_url = img_tag['data-src'] || img_tag['src']
+        next unless img_url
 
         filepath = "#{folder_base}/#{tier}/#{safe_name}.webp"
-        download_image(img_tag['src'], filepath)
+        download_image(img_url, filepath)
       end
 
-      # Generate Shadow from Bronze
+      # Generate Shadow
       bronze_path = "#{folder_base}/bronze/#{safe_name}.webp"
       shadow_path = "#{folder_base}/shadow/#{safe_name}.webp"
-      
       if File.exist?(bronze_path)
         generate_shadow_icon(bronze_path, shadow_path)
-      else
-        silver_path = "#{folder_base}/silver/#{safe_name}.webp"
-        generate_shadow_icon(silver_path, shadow_path) if File.exist?(silver_path)
+      elsif File.exist?("#{folder_base}/silver/#{safe_name}.webp")
+        generate_shadow_icon("#{folder_base}/silver/#{safe_name}.webp", shadow_path)
       end
     end
 
-  # --- CASE B: EVENT / OTHER MEDALS ---
+  # =========================================================
+  # CASE B: EVENT / OTHER MEDALS
+  # =========================================================
   else
     has_images = table.css('img').any?
     next unless has_images
@@ -230,65 +234,59 @@ tables.each_with_index do |table, index|
 
       img_col = cols.find { |c| c.css('img').any? }
       name_col = cols.find { |c| c.text.strip.length > 3 && c != img_col }
-
+      
       img_col ||= cols[0]
       name_col ||= (cols[1] || cols[0])
-
+      
       next unless img_col && name_col
 
-      names_found = []
+      # 1. Grab all Valid Images
+      valid_imgs = img_col.css('img').select { |i| i['width'].to_i > 25 }
+      next if valid_imgs.empty?
 
+      # 2. Extract Names (List or Block)
+      names_found = []
       if name_col.css('li').any?
         name_col.css('li').each do |li|
-          txt = normalize_text(li.text)
-          names_found << txt unless txt.empty?
+          names_found << extract_clean_name(li)
         end
       elsif name_col.to_html.include?('<br')
-        chunks = name_col.inner_html.split(/<br\s*\/?>/i)
-        chunks.each do |chunk|
-          clean = normalize_text(Nokogiri::HTML.fragment(chunk).text)
-          names_found << clean unless clean.empty?
+        name_col.inner_html.split(/<br\s*\/?>/i).each do |chunk|
+          names_found << extract_clean_name(Nokogiri::HTML.fragment(chunk))
         end
       else
-        txt = normalize_text(name_col.text)
-        names_found << txt unless txt.empty?
+        names_found << extract_clean_name(name_col)
       end
 
-      target_img = img_col.css('img').find { |i| i['width'].to_i > 25 }
-      next unless target_img
+      names_found.reject! { |n| n =~ /medal|description|requirement|date/i || n.length < 3 || n.end_with?(':') }
+      next if names_found.empty?
 
-      names_found.each do |raw_name|
-        next if raw_name =~ /medal|description|requirement|date/i
-        next if raw_name.length < 3
-
-        is_simple_row = names_found.length == 1
+      # 3. Decision Matrix
+      if valid_imgs.length > 1
+        # SCENARIO: Multiple Icons in one row
+        # Action: Use the FIRST name as the base for all.
+        # Filenames: Append -2, -3 to ensure we save all images.
+        # JSON Name: Keep the exact same clean name for all entries.
+        base_name = names_found.first
+        safe_base = clean_filename(base_name)
         
-        if is_simple_row
-          date_text = cols.map(&:text).join(" ")
-          year_match = date_text.match(/(20\d{2})/)
-          if year_match && !raw_name.include?(year_match[1])
-             if raw_name =~ /Fest|Safari|Zone|Day|Tour/i
-               raw_name = "#{raw_name} #{year_match[1]}"
-             end
-          end
+        valid_imgs.each_with_index do |img, idx|
+          suffix = idx == 0 ? "" : "-#{idx + 1}"
+          final_safe_name = "#{safe_base}#{suffix}"
+          img_url = img['data-src'] || img['src']
+          process_event_medal(base_name, final_safe_name, img_url, data_store)
         end
-
-        safe_name = clean_filename(raw_name)
-
-        if data_store[:other].key?(safe_name)
-          counter = 2
-          base = safe_name
-          while data_store[:other].key?(safe_name)
-            safe_name = "#{base}-#{counter}"
-            counter += 1
-          end
-        end
-
-        filepath = "other/#{safe_name}.webp"
-        data_store[:other][safe_name] = raw_name
-        puts "  [OTHER] #{raw_name}"
+      else
+        # SCENARIO: Single Icon, Multiple Names (e.g. Timed Research)
+        # Action: Create a separate entry for each name.
+        # Filename: Derived from each specific name (No numbers appended).
+        # JSON Name: Full name.
+        shared_img_url = valid_imgs.first['data-src'] || valid_imgs.first['src']
         
-        download_image(target_img['src'], filepath)
+        names_found.each do |n|
+          safe_n = clean_filename(n)
+          process_event_medal(n, safe_n, shared_img_url, data_store)
+        end
       end
     end
   end
