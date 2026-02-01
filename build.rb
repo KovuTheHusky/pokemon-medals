@@ -8,6 +8,9 @@ require 'shellwords'
 URL = 'https://bulbapedia.bulbagarden.net/wiki/Medal_(GO)'
 USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
 
+# Width of the ring to remove (in pixels) for the shadow icon
+SHADOW_RING_WIDTH = 28
+
 # Define output folders
 folders = %w[
   general/shadow general/bronze general/silver general/gold general/platinum
@@ -23,7 +26,7 @@ data_store = { general: {}, type: {}, other: {} }
 
 def normalize_text(text)
   text.to_s
-      .gsub('*', '')        # Remove asterisks
+      .gsub('*', '')
       .gsub(/[‘’]/, "'")
       .gsub(/[“”]/, '"')
       .gsub(/[–—]/, '-')
@@ -60,7 +63,6 @@ def download_image(url, filepath)
   url = "https:#{url}" if url.start_with?('//')
   url = "https://bulbapedia.bulbagarden.net#{url}" if url.start_with?('/')
   
-  # Clean Bulbapedia Thumbnails to get Full Res
   if url.include?('/thumb/')
     url = url.sub('/thumb/', '/')
     url = url.split('/')[0..-2].join('/')
@@ -89,10 +91,42 @@ def download_image(url, filepath)
   end
 end
 
+# --- SHADOW ICON GENERATOR (Radial FX) ---
+def generate_shadow_icon(source_filepath, dest_filepath)
+  return unless File.exist?(source_filepath)
+  
+  # Calculate cutoff radius
+  # Center is 128 (half of 256). Radius = Center - RingWidth.
+  cutoff_radius = 128 - SHADOW_RING_WIDTH
+  
+  begin
+    image = MiniMagick::Image.open(source_filepath)
+    image.format 'webp'
+    
+    image.combine_options do |c|
+      # 1. Force Resize to 256x256 first
+      c.resize '256x256!'
+      
+      # 2. Colorize to Target Hex
+      c.fill '#efefef'
+      c.colorize '100'
+      
+      # 3. Apply Circular Mask
+      #    We inject the calculated cutoff_radius into the FX formula
+      c.fx "hypot(i-w/2, j-h/2) > #{cutoff_radius} ? 0 : u"
+    end
+    
+    image.write dest_filepath
+  rescue => e
+    puts "    [!] Shadow Generation Error: #{e.message}"
+  end
+end
+
 # --- MAIN LOGIC ---
 
 puts "---------------------------------------------------"
 puts "Scraping Bulbapedia: #{URL}"
+puts "Shadow Ring Width Configured to: #{SHADOW_RING_WIDTH}px"
 puts "---------------------------------------------------"
 
 begin
@@ -113,7 +147,6 @@ tables.each_with_index do |table, index|
     next
   end
 
-  # Detect Table Type
   headers = table.css('th').map { |th| th.text.strip.downcase }
   is_tiered_table = headers.any? { |h| h.include?('bronze') } && headers.any? { |h| h.include?('gold') }
 
@@ -147,7 +180,6 @@ tables.each_with_index do |table, index|
 
       safe_name = clean_filename(raw_name)
 
-      # Determine Category
       is_type = false
       if col_map[:desc] && cols[col_map[:desc]]
         desc = cols[col_map[:desc]].text.downcase
@@ -172,6 +204,17 @@ tables.each_with_index do |table, index|
         filepath = "#{folder_base}/#{tier}/#{safe_name}.webp"
         download_image(img_tag['src'], filepath)
       end
+
+      # Generate Shadow from Bronze
+      bronze_path = "#{folder_base}/bronze/#{safe_name}.webp"
+      shadow_path = "#{folder_base}/shadow/#{safe_name}.webp"
+      
+      if File.exist?(bronze_path)
+        generate_shadow_icon(bronze_path, shadow_path)
+      else
+        silver_path = "#{folder_base}/silver/#{safe_name}.webp"
+        generate_shadow_icon(silver_path, shadow_path) if File.exist?(silver_path)
+      end
     end
 
   # --- CASE B: EVENT / OTHER MEDALS ---
@@ -185,43 +228,32 @@ tables.each_with_index do |table, index|
       cols = row.css('td')
       next if cols.empty?
 
-      # Find the cell containing the Name(s) and the Image
-      # Heuristic: Image is usually in a narrow column, Names in a wide text column
       img_col = cols.find { |c| c.css('img').any? }
       name_col = cols.find { |c| c.text.strip.length > 3 && c != img_col }
 
-      # Fallback if detection fails
       img_col ||= cols[0]
       name_col ||= (cols[1] || cols[0])
 
       next unless img_col && name_col
 
-      # --- SPLIT LOGIC: Extract Multiple Names from One Cell ---
       names_found = []
 
       if name_col.css('li').any?
-        # Priority 1: List items (<ul><li>Name</li></ul>)
         name_col.css('li').each do |li|
-          # Ignore sub-lists or hidden UI text if any
           txt = normalize_text(li.text)
           names_found << txt unless txt.empty?
         end
       elsif name_col.to_html.include?('<br')
-        # Priority 2: Line breaks (Name<br>Name)
-        # Split raw HTML by <br>, then strip tags
         chunks = name_col.inner_html.split(/<br\s*\/?>/i)
         chunks.each do |chunk|
           clean = normalize_text(Nokogiri::HTML.fragment(chunk).text)
           names_found << clean unless clean.empty?
         end
       else
-        # Priority 3: Just the text
         txt = normalize_text(name_col.text)
         names_found << txt unless txt.empty?
       end
 
-      # --- PROCESS EACH EXTRACTED NAME ---
-      # Find the best image in the row (only once)
       target_img = img_col.css('img').find { |i| i['width'].to_i > 25 }
       next unless target_img
 
@@ -229,9 +261,6 @@ tables.each_with_index do |table, index|
         next if raw_name =~ /medal|description|requirement|date/i
         next if raw_name.length < 3
 
-        # Append Year Logic (Only if it looks like a major event and year is missing)
-        # Note: We disable this for complex lists (like ticket lists) because 
-        # matching dates to specific list items is unreliable.
         is_simple_row = names_found.length == 1
         
         if is_simple_row
@@ -246,7 +275,6 @@ tables.each_with_index do |table, index|
 
         safe_name = clean_filename(raw_name)
 
-        # Handle Collisions
         if data_store[:other].key?(safe_name)
           counter = 2
           base = safe_name
@@ -259,6 +287,7 @@ tables.each_with_index do |table, index|
         filepath = "other/#{safe_name}.webp"
         data_store[:other][safe_name] = raw_name
         puts "  [OTHER] #{raw_name}"
+        
         download_image(target_img['src'], filepath)
       end
     end
@@ -266,7 +295,7 @@ tables.each_with_index do |table, index|
 end
 
 puts "\nSaving JSON data..."
-FileUtils.mkdir_p('_data')
+FileUtils.mkdir_p('_data/')
 File.write('_data/general.json', JSON.pretty_generate(data_store[:general]))
 File.write('_data/type.json', JSON.pretty_generate(data_store[:type]))
 File.write('_data/other.json', JSON.pretty_generate(data_store[:other]))
