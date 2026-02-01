@@ -266,6 +266,7 @@ tables.each_with_index do |table, index|
 end
 
 puts "\nSaving JSON data..."
+FileUtils.mkdir_p('_data')
 File.write('_data/general.json', JSON.pretty_generate(data_store[:general]))
 File.write('_data/type.json', JSON.pretty_generate(data_store[:type]))
 File.write('_data/other.json', JSON.pretty_generate(data_store[:other]))
