@@ -8,13 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: sudo apt-get update && sudo apt-get install -y imagemagick
+      # - run: sudo apt-get update && sudo apt-get install -y imagemagick
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - run: gem install bundler mini_magick nokogiri
+      - run: gem install bundler # mini_magick nokogiri
       - run: bundle install
-      - run: ruby build.rb
+      # - run: ruby build.rb
       - run: bundle exec jekyll build
       - uses: actions/upload-pages-artifact@v3
   deploy:
