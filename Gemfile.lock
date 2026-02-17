@@ -60,7 +60,7 @@ GEM
     mini_magick (5.3.1)
       logger
     mini_portile2 (2.8.9)
-    nokogiri (1.19.0)
+    nokogiri (1.19.1)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     pathutil (0.16.2)
