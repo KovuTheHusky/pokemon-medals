@@ -27,6 +27,6 @@ end
 # Performance-booster for watching directories on Windows
 gem "wdm", "~> 0.2.0", :install_if => Gem.win_platform?
 
-gem "json", "~> 2.18"
+gem "json", "~> 2.19"
 gem "nokogiri", "~> 1.19"
 gem "mini_magick", "~> 5.3"
